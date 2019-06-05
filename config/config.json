@@ -1,0 +1,7 @@
+{
+  "apiGatewayAddress": "0.0.0.0:80",
+  "userManagementAddress": "http://localhost:5001/user_management/api/v1.0/",
+  "courseManagementAddress": "http://localhost:5000/course_management/api/v1.0/",
+  "teachingMaterialManagementAddress": "http://localhost:8080/teaching_material_management/api/v1.0/",
+  "tokenPrivateKey": "kjsdksjndg0124"
+}
