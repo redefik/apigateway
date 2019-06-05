@@ -66,7 +66,7 @@ func TestSearchExamNotSuccess(t *testing.T) {
 	request.AddCookie(&http.Cookie{Name: "token", Value: token})
 
 	response := httptest.NewRecorder()
-	handler := createTestGatewaySearchCourse()
+	handler := createTestGatewaySearchExam()
 	// a goroutine representing the microservice listens to the requests coming from the api gateway
 	go mock.LaunchCourseManagementMock()
 	// simulates a request-response interaction between client and api gateway
