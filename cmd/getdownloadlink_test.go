@@ -33,7 +33,7 @@ func TestGetDownloadLinkStudentSuccess(t *testing.T) {
 	_ = config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_user", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_user", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// Make the get request for teaching material searching
@@ -70,7 +70,7 @@ func TestGetDownloadLinkStudentUnauthorized(t *testing.T) {
 	_ = config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_user", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_user", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// Make the get request for teaching material searching
@@ -100,7 +100,7 @@ func TestGetDownloadLinkStudentBadRequest(t *testing.T) {
 	_ = config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_user", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_user", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// Make the get request for teaching material searching
@@ -130,7 +130,7 @@ func TestGetDownloadLinkTeacherSuccess(t *testing.T) {
 	_ = config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to request
-	user := microservice.User{Name: "Mr", Surname: "Brown", Username: "username", Password: "password", Type: "teacher"}
+	user := microservice.User{Name: "Mr", Surname: "Brown", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// Make the get request for teaching material searching
@@ -159,7 +159,6 @@ func TestGetDownloadLinkTeacherSuccess(t *testing.T) {
 	}
 }
 
-
 // TestGetDownloadLinkTeacherUnauthorized tests the following scenario: the client is a teacher and requires a file
 // called "file1" from a course ("course1") who him/her NOT actually hold. Therefore the response code should
 // be 401 Unauthorized although the teacher of that course has previously uploaded the requested file.
@@ -168,7 +167,7 @@ func TestGetDownloadLinkTeacherUnauthorized(t *testing.T) {
 	_ = config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to request
-	user := microservice.User{Name: "Mr", Surname: "Brown", Username: "username", Password: "password", Type: "teacher"}
+	user := microservice.User{Name: "Mr", Surname: "Brown", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// Make the get request for teaching material searching
@@ -190,7 +189,6 @@ func TestGetDownloadLinkTeacherUnauthorized(t *testing.T) {
 	}
 }
 
-
 // TestGetDownloadLinkTeacherBadRequest tests the following scenario: the client is a teacher and requires a file called
 // "file2" from a course ("course3") who him/her actually hold. However the same teacher has no previously uploaded the requested file.
 // Therefore the response code should be 404 Not found
@@ -199,7 +197,7 @@ func TestGetDownloadLinkTeacherBadRequest(t *testing.T) {
 	_ = config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to request
-	user := microservice.User{Name: "Mr", Surname: "Brown", Username: "username", Password: "password", Type: "teacher"}
+	user := microservice.User{Name: "Mr", Surname: "Brown", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// Make the get request for teaching material searching

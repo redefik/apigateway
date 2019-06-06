@@ -25,7 +25,7 @@ func TestAddCourseToStudentSuccess(t *testing.T) {
 	config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to the request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "existent_student", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "existent_student", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// make the PUT request for the course append
@@ -52,7 +52,7 @@ func TestAddCourseToStudentSuccessNotExistentStudent(t *testing.T) {
 	config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to the request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "not_existent_student1", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "not_existent_student1", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// make the PUT request for the course append
@@ -78,7 +78,7 @@ func TestAddCourseToStudentFailNotExistentCourse(t *testing.T) {
 	config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to the request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "existent_student", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "existent_student", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// make the PUT request for the course append
@@ -103,7 +103,7 @@ func TestAddCourseToStudentFailNotExistentStudent(t *testing.T) {
 	config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to the request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "not_existent_student2", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "not_existent_student2", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// make the PUT request for the course append

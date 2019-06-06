@@ -12,7 +12,7 @@ import (
 
 // UserManagementMockRegisterUser simulates the behaviour of the user-management microservice when receives a request of
 // user registration.
-func UserManagementMockRegisterUser(w http.ResponseWriter, r *http.Request) {
+func UserManagementMockRegisterUser(w http.ResponseWriter, _ *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	response := simplejson.New()
@@ -39,7 +39,9 @@ func UserManagementMockLoginUser(w http.ResponseWriter, r *http.Request) {
 		Password: "admin_pass",
 		Name:     "name",
 		Surname:  "surname",
-		Type:     "teacher"}
+		Type:     "teacher",
+		Mail:     "mail",
+	}
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json")
 	response := simplejson.New()

@@ -23,7 +23,7 @@ func CourseManagementMockCreateCourse(w http.ResponseWriter, _ *http.Request) {
 	if err != nil {
 		log.Panicln(err)
 	}
-	_ , err = w.Write(responsePayload)
+	_, err = w.Write(responsePayload)
 	if err != nil {
 		log.Panic(err)
 	}
@@ -35,11 +35,11 @@ func CourseManagementMockSearchCourse(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	//log.Panic("by = " + mux.Vars(r)["by"])
 	//log.Panic("string = "+ mux.Vars(r)["string"])
-	if mux.Vars(r)["by"] == "name" && mux.Vars(r)["string"] == "seq"{
+	if mux.Vars(r)["by"] == "name" && mux.Vars(r)["string"] == "seq" {
 		w.WriteHeader(http.StatusOK)
 	} else if mux.Vars(r)["by"] == "notvalid" {
 		w.WriteHeader(http.StatusBadRequest)
-	} else if mux.Vars(r)["by"] == "teacher" && mux.Vars(r)["string"] == "Mr-Brown"{
+	} else if mux.Vars(r)["by"] == "teacher" && mux.Vars(r)["string"] == "Mr-Brown" {
 		//For test TestGetDownloadLinkTeacherSuccess in getDownloadLink_test
 		w.WriteHeader(http.StatusOK)
 		var courses []microservice.CourseMinimized
@@ -64,7 +64,7 @@ func CourseManagementMockSearchCourse(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Panicln(err)
 	}
-	_ , err = w.Write(responsePayload)
+	_, err = w.Write(responsePayload)
 	if err != nil {
 		log.Panic(err)
 	}
@@ -75,7 +75,7 @@ func CourseManagementMockSearchCourse(w http.ResponseWriter, r *http.Request) {
 func CourseManagementMockCreateStudent(w http.ResponseWriter, r *http.Request) {
 
 	type StudentCreationRequest struct {
-		Name string `json:"name"`
+		Name     string `json:"name"`
 		Username string `json:"username"`
 	}
 
@@ -156,7 +156,7 @@ func CourseManagementMockFindStudentCourses(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func CourseManagementMockCreateExam(w http.ResponseWriter, r *http.Request){
+func CourseManagementMockCreateExam(w http.ResponseWriter, _ *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	response := simplejson.New()
@@ -165,7 +165,7 @@ func CourseManagementMockCreateExam(w http.ResponseWriter, r *http.Request){
 	if err != nil {
 		log.Panicln(err)
 	}
-	_ , err = w.Write(responsePayload)
+	_, err = w.Write(responsePayload)
 	if err != nil {
 		log.Panic(err)
 	}
@@ -175,7 +175,7 @@ func CourseManagementMockCreateExam(w http.ResponseWriter, r *http.Request){
 // exam research. The response is positive (some exams are found) only if the id of course is idSuccess.
 func CourseManagementMockSearchExam(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	if mux.Vars(r)["course"] == "idSuccess"{
+	if mux.Vars(r)["course"] == "idSuccess" {
 		w.WriteHeader(http.StatusOK)
 	} else {
 		w.WriteHeader(http.StatusNotFound)
@@ -186,7 +186,7 @@ func CourseManagementMockSearchExam(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Panicln(err)
 	}
-	_ , err = w.Write(responsePayload)
+	_, err = w.Write(responsePayload)
 	if err != nil {
 		log.Panic(err)
 	}
@@ -231,4 +231,3 @@ func LaunchCourseManagementMock() {
 	r.HandleFunc("/course_management/api/v1.0/students/{username}/courses/{id}", CourseManagementMockUnsubscribeFromCourse).Methods(http.MethodDelete)
 	http.ListenAndServe(config.Configuration.ApiGatewayAddress, r)
 }
-

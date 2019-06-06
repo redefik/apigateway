@@ -15,6 +15,7 @@ type User struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 	Type     string `json:"type"`
+	Mail     string `json:"mail"`
 }
 
 // Encapsulates the field of the JSON body of the http message sent by the user management microservice when it responds

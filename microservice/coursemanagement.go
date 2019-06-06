@@ -90,6 +90,7 @@ func AddCourseToStudent(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		return
 	}
+	log.Println("mail: " + decodedToken.Mail)
 	/* Upon successful validation, the request is forwarded to the course management microservice*/
 	vars := mux.Vars(r)
 	studentUsername := vars["username"]
@@ -199,10 +200,11 @@ func UnsubscribeStudentFromCourse(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	/* The token is decoded and the claims are obtained for further checks */
-	_, err = ValidateToken(tokenString, w)
+	decodedToken, err := ValidateToken(tokenString, w)
 	if err != nil {
 		return
 	}
+	log.Println("mail: " + decodedToken.Mail)
 	/* Upon successful validation, the request is forwarded to the course management microservice and the response is
 	returned to the client*/
 	vars := mux.Vars(r) // url-encoded parameters

@@ -15,6 +15,7 @@ type Claims struct {
 	Name    string
 	Surname string
 	Type    string
+	Mail    string
 	jwt.StandardClaims
 }
 
@@ -24,6 +25,7 @@ var ExpiredToken = errors.New("expired token")
 // - user Name
 // - user Surname
 // - user Type (student or teacher)
+// - user email
 // - token expiration time
 func makeClaims(user User) Claims {
 	expirationTime := time.Now().Add(time.Duration(10 * time.Minute)).Unix()
@@ -32,6 +34,7 @@ func makeClaims(user User) Claims {
 		Surname:        user.Surname,
 		Type:           user.Type,
 		StandardClaims: jwt.StandardClaims{ExpiresAt: expirationTime},
+		Mail:           user.Mail,
 	}
 	return claims
 }

@@ -38,7 +38,7 @@ func TestCreateExamSuccess(t *testing.T) {
 	jsonBody.Set("expirationDate", "20-03-2019")
 
 	// generate a token to be appended to the exam creation request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// make the POST request for the exam creation
@@ -76,7 +76,7 @@ func TestCreateExamNotAllowed(t *testing.T) {
 	jsonBody.Set("expirationDate", "20-03-2019")
 
 	// generate a token to be appended to the exam creation request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// make the POST request for the exam creation
@@ -114,7 +114,7 @@ func TestCreateExamWithTokenBadSigned(t *testing.T) {
 	jsonBody.Set("expirationDate", "20-03-2019")
 
 	// generate a token to be appended to the exam creation request (with wrong secret)
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte("wrong-signing-key"))
 
 	// make the POST request for the exam creation

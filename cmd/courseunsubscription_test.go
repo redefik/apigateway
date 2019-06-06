@@ -25,7 +25,7 @@ func TestCourseUnsubscribeStudentSuccess(t *testing.T) {
 	config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to the request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_test", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_test", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// make the PUT request for the course append

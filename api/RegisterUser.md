@@ -19,7 +19,7 @@
 
 * **Data Params**
 
-  `{username: "admin", password:"admin_pass", name:"John", surname:"Doe", fiscalCode:"teacherFiscalCode"}`
+  `{username: "admin", password:"admin_pass", name:"John", surname:"Doe", fiscalCode:"teacherFiscalCode", mail:"name@example.com"}`
 
 * **Success Response:**
 

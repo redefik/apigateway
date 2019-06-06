@@ -41,7 +41,7 @@ func TestCreateCourseSuccess(t *testing.T) {
 	// The course schedule is omitted for sake of simplicity
 
 	// generate a token to be appended to the course creation request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// make the POST request for the course creation
@@ -80,7 +80,7 @@ func TestCreateCourseNotAllowed(t *testing.T) {
 	// The course schedule is omitted for sake of simplicity
 
 	// generate a token to be appended to the course creation request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// make the POST request for the course creation
@@ -118,7 +118,7 @@ func TestProcessTokenWithBadSign(t *testing.T) {
 	// The course schedule is omitted for sake of simplicity
 
 	// generate a token to be appended to the course creation request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte("wrong-signing-key"))
 
 	// make the POST request for the course creation

@@ -28,7 +28,7 @@ func TestFindTeachingMaterialByCourseSuccess(t *testing.T) {
 	_ = config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// Make the get request for teaching material searching
@@ -62,7 +62,7 @@ func TestFindTeachingMaterialByCourseNotSuccess(t *testing.T) {
 	_ = config.SetConfiguration("../config/config-test.json")
 
 	// generate a token to be appended to request
-	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "student"}
+	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "student", Mail: "name@example.com"}
 	token, _ := microservice.GenerateAccessToken(user, []byte(config.Configuration.TokenPrivateKey))
 
 	// Make the get request for teaching material searching
