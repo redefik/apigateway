@@ -21,6 +21,8 @@ func CreateExam(w http.ResponseWriter, r *http.Request) {
 	/* The token is decoded and the claims are obtained for further checks */
 	decodedToken, err := ValidateToken(tokenString, w)
 	if err != nil {
+		MakeErrorResponse(w, http.StatusUnauthorized, "Wrong Credentials")
+		log.Println("Wrong credentials")
 		return
 	}
 	/* Upon successful authentication check if the request comes from a teacher.
@@ -53,6 +55,8 @@ func FindExamByCourse(w http.ResponseWriter, r *http.Request) {
 	/* The token is decoded and the claims are obtained for further checks */
 	_, err = ValidateToken(tokenString, w)
 	if err != nil {
+		MakeErrorResponse(w, http.StatusUnauthorized, "Wrong Credentials")
+		log.Println("Wrong credentials")
 		return
 	}
 	/* Upon successful validation, the request is forwarded to the course management microservice and the response is
@@ -78,6 +82,8 @@ func ReserveExam(w http.ResponseWriter, r *http.Request) {
 	/* The token is decoded and the claims are obtained for further checks */
 	_, err = ValidateToken(tokenString, w)
 	if err != nil {
+		MakeErrorResponse(w, http.StatusUnauthorized, "Wrong Credentials")
+		log.Println("Wrong credentials")
 		return
 	}
 	/* Upon successful validation, the request is forwarded to the course management microservice and the response is

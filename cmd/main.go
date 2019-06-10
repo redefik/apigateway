@@ -13,7 +13,7 @@ var configurationFile = flag.String("config", "config/config.json", "Location of
 
 // healthCheck handles the requests coming from an external component responsible for verifying the status of the api
 // gateway
-func healthCheck(w http.ResponseWriter, r *http.Request) {
+func healthCheck(w http.ResponseWriter, _ *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
@@ -39,6 +39,7 @@ func main() {
 	r.HandleFunc("/didattica-mobile/api/v1.0/exams/{course}", microservice.FindExamByCourse).Methods(http.MethodGet)
 	r.HandleFunc("/didattica-mobile/api/v1.0/teachingMaterials/{courseId}", microservice.FindTeachingMaterialByCourse).Methods(http.MethodGet)
 	r.HandleFunc("/didattica-mobile/api/v1.0/teachingMaterials/download/{username}/{courseId}/{fileName}", microservice.GetDownloadLinkToFile).Methods(http.MethodGet)
+	r.HandleFunc("/didattica-mobile/api/v1.0/notification/course/{courseId}", microservice.PushCourseNotification).Methods(http.MethodPost)
 	r.HandleFunc("/", healthCheck).Methods(http.MethodGet)
 	// Wait for incoming requests. A new goroutine is created to serve each request
 	log.Fatal(http.ListenAndServe(config.Configuration.ApiGatewayAddress, r))

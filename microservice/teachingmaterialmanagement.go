@@ -21,6 +21,8 @@ func FindTeachingMaterialByCourse(w http.ResponseWriter, r *http.Request) {
 	/* The token is decoded and validated */
 	_, err = ValidateToken(tokenString, w)
 	if err != nil {
+		MakeErrorResponse(w, http.StatusUnauthorized, "Wrong Credentials")
+		log.Println("Wrong credentials")
 		return
 	}
 
@@ -50,6 +52,8 @@ func GetDownloadLinkToFile(w http.ResponseWriter, r *http.Request) {
 	}
 	decodedToken, err := ValidateToken(tokenString, w)
 	if err != nil {
+		MakeErrorResponse(w, http.StatusUnauthorized, "Wrong Credentials")
+		log.Println("Wrong credentials")
 		return
 	}
 

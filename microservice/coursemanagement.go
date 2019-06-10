@@ -217,3 +217,34 @@ func UnsubscribeStudentFromCourse(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 }
+
+// PushCourseNotification process the request of notification push sent by the client checking that the provider is
+// a teacher. Upon successful validation, the request is forwarded to the course management microservice and the response
+// is returned to the client
+func PushCourseNotification(w http.ResponseWriter, r *http.Request) {
+	/*For authentication purpose, the access token is read from the Cookie header*/
+	tokenString, err := GetToken(w, r)
+	if err != nil {
+		return
+	}
+	/*The token is decoded and the claims are obtained for further checks*/
+	decodedToken, err := ValidateToken(tokenString, w)
+	if err != nil {
+		return
+	}
+	// only a teacher can push a notification
+	if decodedToken.Type != "teacher" {
+		MakeErrorResponse(w, http.StatusUnauthorized, "Permission denied")
+		log.Println("Permission denied")
+		return
+	}
+	vars := mux.Vars(r)
+	courseId := vars["courseId"]
+	// on success validation, the request is forwarded to the microservice
+	err = ForwardAndReturnPost(config.Configuration.CourseManagementAddress+"courses/"+courseId+"/notification", "application/json", w, r)
+	if err != nil {
+		MakeErrorResponse(w, http.StatusInternalServerError, "Api Gateway - Internal Server Error")
+		log.Println("Api Gateway - Internal Server Error")
+		return
+	}
+}
