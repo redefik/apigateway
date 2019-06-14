@@ -294,6 +294,15 @@ func CourseManagementMockUnsubscribeFromCourse(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// CourseManagementMockPushNotification simulates the behaviour of the course management microservice when it receives
+// a notification push request
+func CourseManagementMockPushNotification(w http.ResponseWriter, r *http.Request) {
+	courseId := mux.Vars(r)["courseId"]
+	if courseId == "courseId" {
+		w.WriteHeader(http.StatusOK)
+	}
+}
+
 // starts a course management microservice mock
 func LaunchCourseManagementMock() {
 	r := mux.NewRouter()
@@ -307,5 +316,6 @@ func LaunchCourseManagementMock() {
 	r.HandleFunc("/course_management/api/v1.0/exams/{course}", CourseManagementMockSearchExam).Methods(http.MethodGet)
 	r.HandleFunc("/course_management/api/v1.0/exams/{examId}/students/{studentUsername}", CourseManagementMockReserveExam).Methods(http.MethodPut)
 	r.HandleFunc("/course_management/api/v1.0/students/{username}/courses/{id}", CourseManagementMockUnsubscribeFromCourse).Methods(http.MethodDelete)
+	r.HandleFunc("/course_management/api/v1.0/courses/{courseId}/notification", CourseManagementMockPushNotification).Methods(http.MethodPost)
 	http.ListenAndServe(config.Configuration.ApiGatewayAddress, r)
 }

@@ -65,7 +65,7 @@
   OR
 
   * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "Permission denied" }` This error may occur as the course creation is allowed to teachers only.
+    **Content:** `{ error : "Permission denied" }` This error may occur as the exam creation is allowed to teachers only.
     
   OR
 
