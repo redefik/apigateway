@@ -4,7 +4,7 @@
     Cancel the student's subscription for the course
 * **URL**
 
-  /students/:student_username/courses/:course_id
+  /students/:student_username
 
 * **Method:**
 
@@ -15,11 +15,14 @@
    **Required:**
  
    `student_username=[string]`<br/>
-   `course_id=[string]`
    
 * **Data Params**
 
-    None
+    `{  id: "2s910"
+            name:"Advanced Calculus",
+            department: "Science",
+            year: "2018-2019"
+        }`
 
 * **Success Response:**
 

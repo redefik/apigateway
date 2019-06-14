@@ -39,3 +39,10 @@ type StudentCreationRequest struct {
 type CourseMinimized struct {
 	Id string `json:"id"`
 }
+
+// Represent uniquely a course to create in notification management micro-service.
+type Course struct {
+	Name       string `json:"name"`
+	Year       string `json:"year"`
+	Department string `json:"department"`
+}

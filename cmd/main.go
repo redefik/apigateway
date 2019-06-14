@@ -13,7 +13,7 @@ var configurationFile = flag.String("config", "config/config.json", "Location of
 
 // healthCheck handles the requests coming from an external component responsible for verifying the status of the api
 // gateway
-func healthCheck(w http.ResponseWriter, r *http.Request) {
+func healthCheck(w http.ResponseWriter, _ *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
@@ -32,8 +32,8 @@ func main() {
 	r.HandleFunc("/didattica-mobile/api/v1.0/courses", microservice.CreateCourse).Methods(http.MethodPost)
 	r.HandleFunc("/didattica-mobile/api/v1.0/courses/students/{username}", microservice.FindStudentCourses).Methods(http.MethodGet)
 	r.HandleFunc("/didattica-mobile/api/v1.0/courses/{by}/{string}", microservice.FindCourse).Methods(http.MethodGet)
-	r.HandleFunc("/didattica-mobile/api/v1.0/students/{username}/courses/{id}", microservice.UnsubscribeStudentFromCourse).Methods(http.MethodDelete)
-	r.HandleFunc("/didattica-mobile/api/v1.0/students/{username}/courses/{id}", microservice.AddCourseToStudent).Methods(http.MethodPut)
+	r.HandleFunc("/didattica-mobile/api/v1.0/students/{username}", microservice.UnsubscribeStudentFromCourse).Methods(http.MethodDelete)
+	r.HandleFunc("/didattica-mobile/api/v1.0/students/{username}", microservice.AddCourseToStudent).Methods(http.MethodPut)
 	r.HandleFunc("/didattica-mobile/api/v1.0/exams", microservice.CreateExam).Methods(http.MethodPost)
 	r.HandleFunc("/didattica-mobile/api/v1.0/exams/{examId}/students/{studentUsername}", microservice.ReserveExam).Methods(http.MethodPut)
 	r.HandleFunc("/didattica-mobile/api/v1.0/exams/{course}", microservice.FindExamByCourse).Methods(http.MethodGet)

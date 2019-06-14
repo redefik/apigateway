@@ -15,6 +15,7 @@ type Config struct {
 	UserManagementAddress             string
 	CourseManagementAddress           string
 	TeachingMaterialManagementAddress string
+	NotificationManagementAddress     string
 	TokenPrivateKey                   string
 }
 

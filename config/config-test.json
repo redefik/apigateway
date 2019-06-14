@@ -3,5 +3,6 @@
   "userManagementAddress": "http://0.0.0.0:80/user_management/api/v1.0/",
   "courseManagementAddress": "http://0.0.0.0:80/course_management/api/v1.0/",
   "teachingMaterialManagementAddress": "http://0.0.0.0:8080/teaching_material_management/api/v1.0/",
+  "notificationManagementAddress": "http://localhost:8081/notification_management/api/v1.0/",
   "tokenPrivateKey": "kjsdksjndg0124"
 }

@@ -4,7 +4,7 @@
 
 * **URL**
 
-  /students/:student_username/courses/:course_id
+  /students/:student_username
 
 * **Method:**
 
@@ -15,11 +15,14 @@
    **Required:**
  
    `student_username=[string]`<br/>
-   `course_id=[string]`
    
 * **Data Params**
 
-    None
+    `{  id: "2s910"
+        name:"Advanced Calculus",
+        department: "Science",
+        year: "2018-2019"
+    }`
 
 * **Success Response:**
 
@@ -66,7 +69,9 @@
   OR
 
   * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "Permission denied" }` This error may occur as the course creation is allowed to teachers only.
+    **Content:** `{ error : "Permission denied" }` 
+    <br />
+    This error may occur as the course creation is allowed to teachers only.
     
   OR
 
