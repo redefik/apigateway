@@ -27,7 +27,7 @@ func createTestGatewayAddCourseToStudent() http.Handler {
 // Therefore, it is expected that the response to the client is 200 OK*/
 func TestAddCourseToStudentSuccess(t *testing.T) {
 
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "name", Surname: "surname", Username: "existingUser",
@@ -65,7 +65,7 @@ func TestAddCourseToStudentSuccess(t *testing.T) {
 a not existing student. It is expected that the Api gateway provides student creation and the final response is 200 OK*/
 func TestAddCourseToStudentSuccessNotExistentStudent(t *testing.T) {
 
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "name", Surname: "surname", Username: "notExistingStudent",
@@ -107,7 +107,7 @@ The operation is not completed by both micro-services so the distributed transac
 removed from notification management micro-service to maintain consistency.
 */
 func TestAddCourseToStudentFailCourseManagement(t *testing.T) {
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "name", Surname: "surname", Username: "user",
@@ -150,7 +150,7 @@ The operation is not completed by both micro-services so the distributed transac
 removed from course management micro-service to maintain consistency.
 */
 func TestAddCourseToStudentFailNotificationManagement(t *testing.T) {
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "name", Surname: "surname", Username: "user",

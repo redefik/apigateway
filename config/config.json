@@ -1,8 +1,8 @@
 {
   "apiGatewayAddress": "0.0.0.0:80",
-  "userManagementAddress": "http://localhost:5000/user_management/api/v1.0/",
-  "courseManagementAddress": "http://localhost:5001/course_management/api/v1.0/",
-  "teachingMaterialManagementAddress": "http://localhost:8200/teaching_material_management/api/v1.0/",
-  "notificationManagementAddress": "http://localhost:8080/notification_management/api/v1.0/",
+  "userManagementAddress": "http://usermanagement-lb-1219936990.eu-central-1.elb.amazonaws.com/user_management/api/v1.0/",
+  "courseManagementAddress": "http://course-management-lb-1115140002.eu-central-1.elb.amazonaws.com/course_management/api/v1.0/",
+  "teachingMaterialManagementAddress": "http://teaching-material-management-lb-1677859619.eu-central-1.elb.amazonaws.com/teaching_material_management/api/v1.0/",
+  "notificationManagementAddress": "http://notification-management-lb-1839997709.eu-central-1.elb.amazonaws.com/notification_management/api/v1.0/",
   "tokenPrivateKey": "kjsdksjndg0124"
 }

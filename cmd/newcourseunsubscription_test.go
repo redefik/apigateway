@@ -29,7 +29,7 @@ succeeds on both micro-services so the client obtain an http 200 ok as response.
 */
 func TestCourseUnsubscribeSuccess(t *testing.T) {
 
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "name", Surname: "surname", Username: "user",
@@ -72,7 +72,7 @@ fails and the client get a 400 bad request.
 */
 func TestCourseUnsubscribeFailureInCourseManagement(t *testing.T) {
 
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "name", Surname: "surname", Username: "user",
@@ -115,7 +115,7 @@ fails and the client get a 400 bad request.
 */
 func TestCourseUnsubscribeFailureInNotificationManagement(t *testing.T) {
 
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "name", Surname: "surname", Username: "user",

@@ -24,7 +24,7 @@ func createTestGatewayPushNotification() http.Handler {
 // course and the notification is correctly pushed. So the response should be 200 OK
 func TestPushNotificationSuccess(t *testing.T) {
 
-	config.SetConfiguration("../config/config-test.json")
+	config.SetConfigurationFromFile("../config/config-test.json")
 
 	jsonBody := simplejson.New()
 	jsonBody.Set("message", "courseMessage")
@@ -53,7 +53,7 @@ func TestPushNotificationSuccess(t *testing.T) {
 // TestPushNotificationPermissionDenied tests the following scenario: the notification push cannot be done because the
 // client is not a student. So the response should be 401 Unauthorized
 func TestPushNotificationPermissionDenied(t *testing.T) {
-	config.SetConfiguration("../config/config-test.json")
+	config.SetConfigurationFromFile("../config/config-test.json")
 
 	jsonBody := simplejson.New()
 	jsonBody.Set("message", "courseMessage")

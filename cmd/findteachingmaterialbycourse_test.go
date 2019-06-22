@@ -25,7 +25,7 @@ func createTestGatewayFindTeachingMaterialByCourse() http.Handler {
 // It is assumed existing two file (named file1 and file2) for course with id "courseIdWithTeachingMaterial".
 func TestFindTeachingMaterialByCourseSuccess(t *testing.T) {
 
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "student", Mail: "name@example.com"}
@@ -59,7 +59,7 @@ func TestFindTeachingMaterialByCourseSuccess(t *testing.T) {
 // the body is an empty json array.
 func TestFindTeachingMaterialByCourseNotSuccess(t *testing.T) {
 
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "student", Mail: "name@example.com"}

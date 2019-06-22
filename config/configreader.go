@@ -2,6 +2,7 @@ package config
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 	"os"
 )
@@ -19,7 +20,7 @@ type Config struct {
 	TokenPrivateKey                   string
 }
 
-func SetConfiguration(configFile string) error {
+func SetConfigurationFromFile(configFile string) error {
 	jsonFile, err := os.Open(configFile)
 	if err != nil {
 		return err
@@ -33,5 +34,40 @@ func SetConfiguration(configFile string) error {
 	if err != nil {
 		return err
 	}
+	return nil
+}
+
+// Reads the configuration parameters from environment variables and stores them into the Config struct
+func SetConfigurationFromEnvironment() error {
+	gatewayAddress, present := os.LookupEnv("APIGATEWAY_ADDR")
+	if !present {
+		return errors.New("couldn't load configuration parameters")
+	}
+	Configuration.ApiGatewayAddress = gatewayAddress
+	userManagementAddress, present := os.LookupEnv("USER_ADDR")
+	if !present {
+		return errors.New("couldn't load configuration parameters")
+	}
+	Configuration.UserManagementAddress = userManagementAddress
+	courseManagementAddress, present := os.LookupEnv("COURSE_ADDR")
+	if !present {
+		return errors.New("couldn't load configuration parameters")
+	}
+	Configuration.CourseManagementAddress = courseManagementAddress
+	teachingMaterialManagementAddress, present := os.LookupEnv("TEACHING_ADDR")
+	if !present {
+		return errors.New("couldn't load configuration parameters")
+	}
+	Configuration.TeachingMaterialManagementAddress = teachingMaterialManagementAddress
+	notificationManagementAddress, present := os.LookupEnv("NOTIFICATION_ADDR")
+	if !present {
+		return errors.New("couldn't load configuration parameters")
+	}
+	Configuration.NotificationManagementAddress = notificationManagementAddress
+	tokenPrivateKey, present := os.LookupEnv("TOKEN_PRIVATE_KEY")
+	if !present {
+		return errors.New("couldn't load configuration parameters")
+	}
+	Configuration.TokenPrivateKey = tokenPrivateKey
 	return nil
 }

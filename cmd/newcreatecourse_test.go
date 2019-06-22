@@ -27,7 +27,7 @@ in registration of course so the distributed transaction has success. The Api Ga
 response to the client*/
 func TestCreateCourseSuccessNew(t *testing.T) {
 
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// build the information of the course to be created (in a simplified way)
 	jsonBody := simplejson.New()
@@ -61,7 +61,7 @@ func TestCreateCourseSuccessNew(t *testing.T) {
 for the teachers only, therefore the Api Gateway should respond with Unauthorized.*/
 func TestCreateCourseNotAllowedNew(t *testing.T) {
 
-	config.SetConfiguration("../config/config-test.json")
+	config.SetConfigurationFromFile("../config/config-test.json")
 
 	// build the information of the course to be created (in a simplified way)
 	jsonBody := simplejson.New()
@@ -94,7 +94,7 @@ func TestCreateCourseNotAllowedNew(t *testing.T) {
 /*TestProcessTokenWithBadSignNew tests the following scenario: the client makes a course creation request containing an
 access token that is not valid according to the signing key used by the Api Gateway. The gateway should respond with 401*/
 func TestProcessTokenWithBadSignNew(t *testing.T) {
-	config.SetConfiguration("../config/config-test.json")
+	config.SetConfigurationFromFile("../config/config-test.json")
 
 	// build the information of the course to be created (in a simplified way)
 	jsonBody := simplejson.New()
@@ -131,7 +131,7 @@ and the just created course is deleted from the data-store of notification manag
 server error */
 func TestCreateCourseFailureCourseManagement(t *testing.T) {
 
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// build the information of the course to be created (in a simplified way)
 	jsonBody := simplejson.New()
@@ -169,7 +169,7 @@ and the just created course is deleted from the data-store of course management.
 server error */
 func TestCreateCourseFailureNotificationManagement(t *testing.T) {
 
-	_ = config.SetConfiguration("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../config/config-test.json")
 
 	// build the information of the course to be created (in a simplified way)
 	jsonBody := simplejson.New()

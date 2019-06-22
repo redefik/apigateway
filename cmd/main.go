@@ -1,15 +1,12 @@
 package main
 
 import (
-	"flag"
 	"github.com/gorilla/mux"
 	"github.com/redefik/sdccproject/apigateway/config"
 	"github.com/redefik/sdccproject/apigateway/microservice"
 	"log"
 	"net/http"
 )
-
-var configurationFile = flag.String("config", "config/config.json", "Location of the config file.")
 
 // healthCheck handles the requests coming from an external component responsible for verifying the status of the api
 // gateway
@@ -19,9 +16,8 @@ func healthCheck(w http.ResponseWriter, _ *http.Request) {
 
 func main() {
 
-	flag.Parse()
 	// Read the listening address of the gateway and the address of the other microservices
-	err := config.SetConfiguration(*configurationFile)
+	err := config.SetConfigurationFromEnvironment()
 	if err != nil {
 		log.Panicln(err)
 	}

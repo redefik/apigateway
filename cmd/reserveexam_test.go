@@ -22,7 +22,7 @@ func createTestGatewayReserveExam() http.Handler {
 Therefore, it is expected that the response to the client is 200 OK*/
 func TestReserveExamSuccess(t *testing.T) {
 
-	config.SetConfiguration("../config/config-test.json")
+	config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "existent_student", Password: "password", Type: "student", Mail: "name@example.com"}
@@ -48,7 +48,7 @@ func TestReserveExamSuccess(t *testing.T) {
 // TestReserveExamNotExistentStudent tests the following scenario: the client requires to make an exam reservation for
 // a not existent student, then the response should be 404 Not Found
 func TestReserveExamNotExistentStudent(t *testing.T) {
-	config.SetConfiguration("../config/config-test.json")
+	config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "existent_student", Password: "password", Type: "student", Mail: "name@example.com"}
@@ -73,7 +73,7 @@ func TestReserveExamNotExistentStudent(t *testing.T) {
 // TestReserveExamNotExistentExam tests the following scenario: the client requires to make an exam reservation for
 // a not existent exam, then the response should be 404 Not Found
 func TestReserveExamNotExistentExam(t *testing.T) {
-	config.SetConfiguration("../config/config-test.json")
+	config.SetConfigurationFromFile("../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "existent_student", Password: "password", Type: "student", Mail: "name@example.com"}

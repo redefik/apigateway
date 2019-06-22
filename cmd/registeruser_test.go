@@ -24,7 +24,7 @@ func createTestGatewayRegisterUser() http.Handler {
 // forwards it to the user-management microservice. If the send fails the test does not pass.
 func TestRegisterUserSuccess(t *testing.T) {
 
-	config.SetConfiguration("../config/config-test.json")
+	config.SetConfigurationFromFile("../config/config-test.json")
 
 	jsonBody := simplejson.New()
 	jsonBody.Set("username", "user")
