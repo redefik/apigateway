@@ -1,4 +1,4 @@
-package main
+package courseCreation
 
 //WARNING: THESE TESTS ARE BEEN DESIGNED FOR THE OLD VERSION OF CREATE COURSE. THEIR RESULTS ARE NO MORE VALID.
 //SEE newcreatecourse_test.go

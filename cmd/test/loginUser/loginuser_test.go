@@ -1,4 +1,4 @@
-package main
+package loginUser
 
 import (
 	"bytes"
@@ -27,7 +27,7 @@ func createTestGatewayLoginUser() http.Handler {
 // and the gateway should create the token responding to the client with a 201 http status code.
 func TestUserLoginSuccess(t *testing.T) {
 
-	config.SetConfigurationFromFile("../config/config-test.json")
+	config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	jsonBody := simplejson.New()
 	jsonBody.Set("username", "admin")
@@ -57,7 +57,7 @@ func TestUserLoginSuccess(t *testing.T) {
 // and the gateway should respond to the client with a 401 http status code.
 func TestUserLoginFailure(t *testing.T) {
 
-	config.SetConfigurationFromFile("../config/config-test.json")
+	config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	jsonBody := simplejson.New()
 	jsonBody.Set("username", "admin")

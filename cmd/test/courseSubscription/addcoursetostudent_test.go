@@ -1,4 +1,4 @@
-package main
+package courseSubscription
 
 //WARNING: THESE TESTS ARE BEEN DESIGNED FOR THE OLD VERSION OF ADD COURSE TO STUDENT. THEIR RESULTS ARE NO MORE VALID.
 //SEE newaddcoursetostudent_test.go

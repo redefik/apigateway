@@ -1,4 +1,4 @@
-package main
+package searchCourse
 
 import (
 	"github.com/gorilla/mux"
@@ -24,7 +24,7 @@ func createTestGatewaySearchCourse() http.Handler {
 // It is assumed that exist a course with name matching with sequence "seq", so in this case the research has success.
 func TestSearchCourseSuccess(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
@@ -54,7 +54,7 @@ func TestSearchCourseSuccess(t *testing.T) {
 // It is assumed that not exist a course with teacher's name matching with sequence "seq", so in this case the research failed.
 func TestSearchCourseNotSuccess(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
@@ -84,7 +84,7 @@ func TestSearchCourseNotSuccess(t *testing.T) {
 // Because the type does not match with "name" or "teacher" the research failed.
 func TestSearchCourseFailure(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to the request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}

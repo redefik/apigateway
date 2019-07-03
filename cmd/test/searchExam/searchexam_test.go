@@ -1,4 +1,4 @@
-package main
+package searchExam
 
 import (
 	"github.com/gorilla/mux"
@@ -24,7 +24,7 @@ func createTestGatewaySearchExam() http.Handler {
 // matching with id "idSuccess", so in this case the research has success.
 func TestSearchExamSuccess(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to the course creation request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
@@ -54,7 +54,7 @@ func TestSearchExamSuccess(t *testing.T) {
 // matching with id "idFailure", so in this case the research has no success.
 func TestSearchExamNotSuccess(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to the course creation request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}

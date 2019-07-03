@@ -1,4 +1,4 @@
-package main
+package getStudentCourses
 
 import (
 	"github.com/gorilla/mux"
@@ -22,7 +22,7 @@ func createTestGatewayGetStudentCourses() http.Handler {
 // and finds them. Therefore the response code should be 200 OK.
 func TestFindStudentCoursesSuccess(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to the course creation request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_with_courses", Password: "password", Type: "student", Mail: "name@example.com"}
@@ -49,7 +49,7 @@ func TestFindStudentCoursesSuccess(t *testing.T) {
 // but the student is not subscribed to any course. Therefore the response code should be 404 NOT FOUND.
 func TestFindStudentCoursesNotFound(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to the course creation request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_without_courses", Password: "password", Type: "student", Mail: "name@example.com"}

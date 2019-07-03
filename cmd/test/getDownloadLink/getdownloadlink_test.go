@@ -1,4 +1,4 @@
-package main
+package getDownloadLink
 
 import (
 	"encoding/json"
@@ -30,7 +30,7 @@ func createTestGatewayGetDownloadLink() http.Handler {
 // to download file.
 func TestGetDownloadLinkStudentSuccess(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_user", Password: "password", Type: "student", Mail: "name@example.com"}
@@ -67,7 +67,7 @@ func TestGetDownloadLinkStudentSuccess(t *testing.T) {
 // be 401 Unauthorized although the teacher of this course has previously uploaded the requested file
 func TestGetDownloadLinkStudentUnauthorized(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_user", Password: "password", Type: "student", Mail: "name@example.com"}
@@ -97,7 +97,7 @@ func TestGetDownloadLinkStudentUnauthorized(t *testing.T) {
 // no uploaded the requested file. Therefore the response code should be 404 Not found
 func TestGetDownloadLinkStudentBadRequest(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to request
 	user := microservice.User{Name: "nome", Surname: "cognome", Username: "student_user", Password: "password", Type: "student", Mail: "name@example.com"}
@@ -127,7 +127,7 @@ func TestGetDownloadLinkStudentBadRequest(t *testing.T) {
 // file. Therefore he can download it: the response code should be 200 OK body contains the link to download file.
 func TestGetDownloadLinkTeacherSuccess(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to request
 	user := microservice.User{Name: "Mr", Surname: "Brown", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
@@ -164,7 +164,7 @@ func TestGetDownloadLinkTeacherSuccess(t *testing.T) {
 // be 401 Unauthorized although the teacher of that course has previously uploaded the requested file.
 func TestGetDownloadLinkTeacherUnauthorized(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to request
 	user := microservice.User{Name: "Mr", Surname: "Brown", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}
@@ -194,7 +194,7 @@ func TestGetDownloadLinkTeacherUnauthorized(t *testing.T) {
 // Therefore the response code should be 404 Not found
 func TestGetDownloadLinkTeacherBadRequest(t *testing.T) {
 
-	_ = config.SetConfigurationFromFile("../config/config-test.json")
+	_ = config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// generate a token to be appended to request
 	user := microservice.User{Name: "Mr", Surname: "Brown", Username: "username", Password: "password", Type: "teacher", Mail: "name@example.com"}

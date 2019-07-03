@@ -1,4 +1,4 @@
-package main
+package examCreation
 
 import (
 	"bytes"
@@ -26,7 +26,7 @@ teacher, so the creation operation is allowed. The Api Gateway should then forwa
 and return the response to the client*/
 func TestCreateExamSuccess(t *testing.T) {
 
-	config.SetConfigurationFromFile("../config/config-test.json")
+	config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// build the information of the exam to be created
 	jsonBody := simplejson.New()
@@ -102,7 +102,7 @@ func TestCreateExamNotAllowed(t *testing.T) {
 access token that is not valid according to the signing key used by the Api Gateway. The gateway should respond with 401*/
 
 func TestCreateExamWithTokenBadSigned(t *testing.T) {
-	config.SetConfigurationFromFile("../config/config-test.json")
+	config.SetConfigurationFromFile("../../../config/config-test.json")
 
 	// build the information of the exam to be created
 	jsonBody := simplejson.New()
